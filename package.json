@@ -4,11 +4,11 @@
   "description": "Open Shift API client library",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "buster test"
   },
   "dependencies": {
-    "request": ">= 2.0.0",
-  }
+    "request": ">= 2.0.0"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/wercker/node-openshiftclient.git"
@@ -16,5 +16,8 @@
   "author": "wercker",
   "license": "MIT",
   "readmeFilename": "README.md",
-  "gitHead": "4dc46b46ed3b3d4c858093ed5f3a601b6ae04f33"
+  "gitHead": "4dc46b46ed3b3d4c858093ed5f3a601b6ae04f33",
+  "devDependencies": {
+    "buster": "~0.6.12"
+  }
 }

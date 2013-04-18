@@ -1,1 +1,1 @@
-module.exports = require("./lib/openshiftclient").OpenShiftClient;
+module.exports = require("./lib/openshiftclient");
