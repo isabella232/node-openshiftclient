@@ -1,9 +1,11 @@
 var buster = require("buster");
-require("buster-test").spec;
 var OpenShiftClient = require("../index");
 
+require("buster-test");
+
 var assert = buster.assert;
-buster.spec.expose();
+var describe = buster.spec.describe;
+var it = buster.spec.it;
 
 var spec = describe("Creating client", function(){
     "use strict";
@@ -13,13 +15,13 @@ var spec = describe("Creating client", function(){
         };
 
         it("should throw", function(){
-            assert.exception(this.creatingWithNoParameters);
-        })
+            assert.exception(creatingWithNoParameters);
+        });
     });
 
     describe("with a single parameter", function(){
-        authKey = "ABC";
-        client = new OpenShiftClient(authKey);
+        var authKey = "ABC";
+        var client = new OpenShiftClient(authKey);
 
         it("should set authKey", function(){
             assert.equals(client.authKey, authKey);
@@ -33,10 +35,10 @@ var spec = describe("Creating client", function(){
 
         it("should set username", function(){
             assert.equals(client.username, username);
-        })
+        });
 
         it("should set password", function(){
             assert.equals(client.password, password);
-        })
+        });
     });
 });
