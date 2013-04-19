@@ -2,12 +2,7 @@ var buster = require("buster");
 var OpenShiftClient = require("../index");
 var constants = require("./test-constants");
 
-require("buster-test");
-
-var assert = buster.assert;
-var describe = buster.spec.describe;
-var it = buster.spec.it;
-var before = buster.spec.before;
+buster.spec.expose();
 
 var spec = describe("The OpenShiftClient with authKey", function(){
     "use strict";
