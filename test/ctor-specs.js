@@ -6,39 +6,47 @@ require("buster-test");
 var assert = buster.assert;
 var describe = buster.spec.describe;
 var it = buster.spec.it;
+var before = buster.spec.before;
 
 var spec = describe("Creating client", function(){
     "use strict";
     describe("with no parameters", function() {
-        var creatingWithNoParameters = function() {
-            var _ = new OpenShiftClient();
-        };
+        before(function() {
+            this.creatingWithNoParameters = function() {
+                var _ = new OpenShiftClient();
+            };
+        });
 
         it("should throw", function(){
-            assert.exception(creatingWithNoParameters);
+            assert.exception(this.creatingWithNoParameters);
         });
     });
 
     describe("with a single parameter", function(){
-        var authKey = "ABC";
-        var client = new OpenShiftClient(authKey);
+        before(function() {
+            this.authKey = "ABC";
+            this.client = new OpenShiftClient(this.authKey);
+        });
+
 
         it("should set authKey", function(){
-            assert.equals(client.authKey, authKey);
+            assert.equals(this.client.authKey, this.authKey);
         });
     });
 
     describe("with two parameters", function(){
-        var username = "username";
-        var password = "password";
-        var client = new OpenShiftClient(username, password);
+        before(function() {
+            this.username = "username";
+            this.password = "password";
+            this.client = new OpenShiftClient(this.username, this.password);
+        });
 
         it("should set username", function(){
-            assert.equals(client.username, username);
+            assert.equals(this.client.username, this.username);
         });
 
         it("should set password", function(){
-            assert.equals(client.password, password);
+            assert.equals(this.client.password, this.password);
         });
     });
 });
