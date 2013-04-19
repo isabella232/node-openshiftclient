@@ -7,44 +7,48 @@ buster.spec.expose();
 var spec = describe("The OpenShiftClient", function(){
     "use strict";
 
-    var options;
-    before(function(){
-        this.client._doRequest = function() {
-            var callback = arguments[arguments.length-1];
-            options = arguments[0];
-        };
-    });
-
     describe("with a authKey", function(){
-        "use strict";
-
         before(function() {
-            this.client = new OpenShiftClient(constants.validAuthKey);
+            var client = new OpenShiftClient(constants.validAuthKey);
+            var self = this;
+            client._doRequest = function() {
+                var callback = arguments[arguments.length-1];
+                self.options = arguments[0];
+            };
+
+            this.client = client;
         });
 
         it("includes authKey in authorization header", function(){
             this.client.listDomains();
 
             var expected = "Bearer "+this.client.authKey;
-            assert.equals(options.headers.Authorization, expected);
+            assert.equals(this.options.headers.Authorization, expected);
         });
     });
 
     describe("with a username or password", function(){
-        "use strict";
-
         before(function() {
-            this.username = "username";
-            this.password = "password";
-            this.client = new OpenShiftClient(username, password);
+            var username = "username";
+            var password = "password";
+            var client = new OpenShiftClient(username, password);
+            var self = this;
+
+            client._doRequest = function() {
+                var callback = arguments[arguments.length-1];
+                self.options = arguments[0];
+            };
+
+            this.client = client;
         });
 
-        it("includes authKey in authorization header", function(){
+        itEventually("includes authKey in authorization header", function(){
             this.client.listDomains();
 
-            var base64 = new Buffer(this.username+":"+this.password).toString('base64');
+            var userAndPass = this.username + ":" + this.password;
+            var base64 = new Buffer(userAndPass).toString("base64");
             var expected = "Basic "+ base64;
-            assert.equals(options.headers.Authorization, expected);
+            assert.equals(this.options.headers.Authorization, expected);
         });
     });
 });

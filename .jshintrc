@@ -22,7 +22,8 @@
         "assert",
         "before",
         "describe",
-        "it"
+        "it",
+        "itEventually"
     ],
 
     "indent"        : 4,
