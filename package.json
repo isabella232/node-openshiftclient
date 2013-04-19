@@ -18,6 +18,7 @@
   "readmeFilename": "README.md",
   "gitHead": "4dc46b46ed3b3d4c858093ed5f3a601b6ae04f33",
   "devDependencies": {
-    "buster": "~0.6.12"
+    "buster": "~0.6.12",
+    "buster-test": "~0.6.12"
   }
 }

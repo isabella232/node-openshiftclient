@@ -1,9 +1,9 @@
 var config = module.exports;
 
-config["My tests"] = {
+config["OpenShift API client tests"] = {
     rootPath: "../",
     environment: "node",
     tests: [
-        "test/**/*-test.js"
+        "test/**/*-specs.js"
     ]
 };
