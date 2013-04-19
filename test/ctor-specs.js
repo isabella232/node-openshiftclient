@@ -14,7 +14,7 @@ var spec = describe("Creating client", function() {
         });
 
         it("should throw", function() {
-            assert.exception(this.creatingWithNoParameters);
+            expect(this.creatingWithNoParameters).toThrow();
         });
     });
 
@@ -25,14 +25,14 @@ var spec = describe("Creating client", function() {
             });
 
             it("should set authKey", function() {
-                assert.equals(this.client.authKey, constants.validAuthKey);
+                expect(this.client.authKey).toEqual(constants.validAuthKey);
             });
         });
         describe("which is a invalid authKey", function() {
             it("should throw error", function() {
-                assert.exception(function() {
+                expect(function() {
                     var client = new OpenShiftClient("invalid auth key");
-                });
+                }).toThrow();
             });
         });
     });
@@ -45,11 +45,11 @@ var spec = describe("Creating client", function() {
         });
 
         it("should set username", function() {
-            assert.equals(this.client.username, this.username);
+            expect(this.client.username).toEqual(this.username);
         });
 
         it("should set password", function() {
-            assert.equals(this.client.password, this.password);
+            expect(this.client.password).toEqual(this.password);
         });
     });
 });

@@ -19,9 +19,9 @@
 
     "predef"        : [
         "after",
-        "assert",
         "before",
         "describe",
+        "expect",
         "it",
         "itEventually"
     ],

@@ -22,8 +22,8 @@ var spec = describe("The OpenShiftClient", function(){
         it("includes authKey in authorization header", function(){
             this.client.listDomains();
 
-            var expected = "Bearer "+this.client.authKey;
-            assert.equals(this.options.headers.Authorization, expected);
+            var expected = "Bearer " + this.client.authKey;
+            expect(this.options.headers.Authorization).toEqual(expected);
         });
     });
 
@@ -48,7 +48,7 @@ var spec = describe("The OpenShiftClient", function(){
             var userAndPass = this.username + ":" + this.password;
             var base64 = new Buffer(userAndPass).toString("base64");
             var expected = "Basic "+ base64;
-            assert.equals(this.options.headers.Authorization, expected);
+            expect(this.options.headers.Authorization).toEqual(expected);
         });
     });
 });
