@@ -26,7 +26,6 @@ var spec = describe("Creating client", function() {
     describe("with a single parameter", function() {
         describe("which is a valid authKey", function() {
             before(function() {
-                console.log('test '+ a.validAuthKey);
                 this.client = new OpenShiftClient(a.validAuthKey);
             });
 
