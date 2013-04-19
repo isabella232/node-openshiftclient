@@ -28,7 +28,6 @@ var spec = describe("Creating client", function(){
             this.client = new OpenShiftClient(this.authKey);
         });
 
-
         it("should set authKey", function(){
             assert.equals(this.client.authKey, this.authKey);
         });
