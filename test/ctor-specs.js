@@ -38,7 +38,7 @@ var spec = describe("Creating client", function() {
             it("should throw error", function() {
                 assert.exception(function() {
                     var client = new OpenShiftClient("invalid auth key");
-                })
+                });
             });
         });
     });
