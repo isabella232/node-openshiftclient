@@ -19,19 +19,19 @@ var spec = describe("Creating client", function() {
     });
 
     describe("with a single parameter", function() {
-        describe("which is a valid authKey", function() {
+        describe("which is a valid authToken", function() {
             before(function() {
-                this.client = new OpenShiftClient(constants.validAuthKey);
+                this.client = new OpenShiftClient(constants.validAuthToken);
             });
 
-            it("should set authKey", function() {
-                expect(this.client.authKey).toEqual(constants.validAuthKey);
+            it("should set authToken", function() {
+                expect(this.client.authToken).toEqual(constants.validAuthToken);
             });
         });
-        describe("which is a invalid authKey", function() {
+        describe("which is a invalid authToken", function() {
             it("should throw error", function() {
                 expect(function() {
-                    var client = new OpenShiftClient("invalid auth key");
+                    var client = new OpenShiftClient("invalid auth token");
                 }).toThrow();
             });
         });

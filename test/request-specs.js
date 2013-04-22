@@ -7,9 +7,9 @@ buster.spec.expose();
 var spec = describe("The OpenShiftClient", function(){
     "use strict";
 
-    describe("with a authKey", function(){
+    describe("with a authToken", function(){
         before(function() {
-            var client = new OpenShiftClient(constants.validAuthKey);
+            var client = new OpenShiftClient(constants.validAuthToken);
             var self = this;
             client._doRequest = function() {
                 var callback = arguments[arguments.length-1];
@@ -19,10 +19,10 @@ var spec = describe("The OpenShiftClient", function(){
             this.client = client;
         });
 
-        it("includes authKey in authorization header", function(){
+        it("includes authToken in authorization header", function(){
             this.client.listDomains();
 
-            var expected = "Bearer " + this.client.authKey;
+            var expected = "Bearer " + this.client.authToken;
             expect(this.options.headers.Authorization).toEqual(expected);
         });
     });
@@ -42,7 +42,7 @@ var spec = describe("The OpenShiftClient", function(){
             this.client = client;
         });
 
-        itEventually("includes authKey in authorization header", function(){
+        itEventually("includes authToken in authorization header", function(){
             this.client.listDomains();
 
             var userAndPass = this.username + ":" + this.password;
