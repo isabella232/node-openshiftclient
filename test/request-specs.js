@@ -17,6 +17,14 @@ var spec = describe("The OpenShiftClient", function(){
         this.client = client;
     });
 
+    it("can list applications", function(){
+        var domainId = "myapp";
+        this.client.listApplications(domainId);
+
+        var url = this.client.baseUrl + "domains/" + domainId + "/applications";
+        expect(this.options.urlß).toEqual(url);
+    });
+
     itEventually("includes application/json in accept header", function(){
         expect(this.options.headers.Accept).toEqual("application/json");
     });
