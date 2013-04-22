@@ -6,6 +6,20 @@ buster.spec.expose();
 
 var spec = describe("The OpenShiftClient", function(){
     "use strict";
+    before(function() {
+        var client = new OpenShiftClient(constants.validAuthToken);
+        var self = this;
+        client._doRequest = function() {
+            var callback = arguments[arguments.length-1];
+            self.options = arguments[0];
+        };
+
+        this.client = client;
+    });
+
+    itEventually("includes application/json in accept header", function(){
+        expect(this.options.headers.Accept).toEqual("application/json");
+    });
 
     describe("with a authToken", function(){
         before(function() {
