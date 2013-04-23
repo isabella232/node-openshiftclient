@@ -76,10 +76,12 @@ var spec = describe("The OpenShiftClient", function(){
                 self.options = arguments[0];
             };
 
+            this.username = username;
+            this.password = password;
             this.client = client;
         });
 
-        itEventually("includes authToken in authorization header", function(){
+        it("includes basic form authentication in authorization header", function(){
             this.client.listDomains();
 
             var userAndPass = this.username + ":" + this.password;
