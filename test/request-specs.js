@@ -36,10 +36,12 @@ var spec = describe("The OpenShiftClient", function(){
 
         expect(this.options.url).toEqual(url);
         expect(this.options.method).toEqual(method);
-    })
+    });
 
-    itEventually("includes application/json in accept header", function(){
-        expect(this.options.headers.Accept).toEqual("application/json");
+    it("includes application/json in accept header for a request", function(){
+        this.client.listDomains();
+
+        expect(this.options.json).toEqual(true);
     });
 
     describe("with a authToken", function(){
