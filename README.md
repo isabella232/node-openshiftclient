@@ -15,3 +15,6 @@ password. So `List User Applications` becomes `listApplications`.
 ### List User Applications
 
     listApplications()
+
+Build status:
+[![Wercker status](https://app.wercker.com/status/c216248c1083a323e82673cbdefcb32c/m)](https://app.wercker.com/project/bykey/c216248c1083a323e82673cbdefcb32c)
